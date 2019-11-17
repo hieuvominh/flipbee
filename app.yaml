@@ -1,4 +1,4 @@
-entrypoint: bundle exec rackup --port $PORT
+entrypoint: bundle exec puma --port $PORT
 env: flex
 runtime: ruby
 
