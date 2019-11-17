@@ -21,4 +21,7 @@ test:
 
 production:
   <<: *default
-  database: flipbee_production
+  database: flipbee_test_production
+  username: hieuvo
+  password: 10761521
+
