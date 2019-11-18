@@ -1,23 +1,23 @@
 module API::V1
   class CollectionsController < ApplicationController
     def index
-      render json: Collection.all, serializer_each: serializer, root: false
+      render json: Collection.all, serializer_each: serializer, root: false, adapter: :attributes
     end
 
     def create
       collection = Collection.create!(collection_params)
-      render json: collection, serializer: serializer, status: :created, root: false
+      render json: collection, serializer: serializer, status: :created, root: false, adapter: :attributes
     end
 
     def show
       collection = Collection.find(params[:id])
-      render json: collection, serializer: serializer, root: false
+      render json: collection, root: false, serializer: serializer, adapter: :attributes
     end
 
     def update
       collection = Collection.find(params[:id])
       if collection.update(collection_params)
-        render json: collection, serializer: serializer, root: false
+        render json: collection, serializer: serializer, root: false, adapter: :attributes
       else
         render json, status: 500
       end
