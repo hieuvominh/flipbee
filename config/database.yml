@@ -22,3 +22,7 @@ test:
 production:
   <<: *default
   database: flipbee_production
+  username: "hieuvo"
+  password: "10761521"
+  host: "/cloudsql/flipbee:asia-east1:flipbee-production"
+
