@@ -22,7 +22,6 @@ Bundler.require(*Rails.groups)
 module FlipbeeApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -32,8 +31,5 @@ module FlipbeeApi
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
-    config.time_zone = 'Singapore'
-    config.active_record.default_timezone = :local
   end
 end
