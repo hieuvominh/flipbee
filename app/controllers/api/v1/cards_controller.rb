@@ -17,7 +17,7 @@ module API::V1
 
     def update
       card = Card.find(params[:id])
-      if card.update(card_params_1)
+      if card.update(card_params)
         render json: card, serializer: serializer, root: false, adapter: :attributes
       else
         render json, status: 500
@@ -31,15 +31,15 @@ module API::V1
 
     private
 
-    def card_params
-      params.require(:card).permit(
-        :image_front_card, :image_back_card,
-        :description, :collection_id,
-        :text_front_card, :text_back_card
-      )
-    end
+    # def card_params
+    #   params.require(:card).permit(
+    #     :image_front_card, :image_back_card,
+    #     :description, :collection_id,
+    #     :text_front_card, :text_back_card
+    #   )
+    # end
 
-    def card_params_1
+    def card_params
       params.permit(
         :image_front_card, :image_back_card,
         :description, :collection_id,

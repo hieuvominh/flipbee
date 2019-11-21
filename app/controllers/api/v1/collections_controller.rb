@@ -31,7 +31,7 @@ module API::V1
     private
 
     def collection_params
-      params.require(:collection).permit(
+      params.permit(
         :title, :description, :thumb_image_url
       )
     end
