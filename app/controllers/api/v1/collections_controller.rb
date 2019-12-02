@@ -1,5 +1,7 @@
 module API::V1
   class CollectionsController < ApplicationController
+    before_action :authorize_request, except: %i[index show]
+
     def index
       render json: Collection.all, serializer_each: serializer, root: false, adapter: :attributes
     end
@@ -26,6 +28,8 @@ module API::V1
     def destroy
       collection = Collection.find(params[:id])
       collection.destroy!
+      cards = Card.where(collection_id: params[:id])
+      cards.update_all(collection_id: nil)
     end
 
     private
@@ -37,7 +41,7 @@ module API::V1
     end
 
     def serializer
-      API::V1::CollectionSerializer
+      # API::V1::CollectionSerializer
     end
   end
 end

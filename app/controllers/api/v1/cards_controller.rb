@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module API::V1
   class CardsController < ApplicationController
+    before_action :authorize_request, except: %i[index show]
+
     def index
       render json: Card.all, serializer_each: serializer, root: false, adapter: :attributes
     end
