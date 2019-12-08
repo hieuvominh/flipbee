@@ -7,7 +7,7 @@ module API::V1
     end
 
     def create
-      collection = Collection.create!(collection_params)
+      collection = Collection.create!(collection_params.merge(:user_id => @current_user.id))
       render json: collection, serializer: serializer, status: :created, root: false, adapter: :attributes
     end
 
@@ -36,7 +36,7 @@ module API::V1
 
     def collection_params
       params.permit(
-        :title, :description, :thumb_image_url
+        :title, :description, :thumb_image_url, :user_id
       )
     end
 

@@ -8,7 +8,7 @@ module API::V1
     end
 
     def create
-      card = Card.create!(card_params)
+      card = Card.create!(card_params.merge(:user_id => @current_user.id))
       render json: card, serializer: serializer, status: :created, root: false, adapter: :attributes
     end
 
@@ -45,7 +45,7 @@ module API::V1
       params.permit(
         :image_front_card, :image_back_card,
         :description, :collection_id,
-        :text_front_card, :text_back_card
+        :text_front_card, :text_back_card, :user_id
       )
     end
 
