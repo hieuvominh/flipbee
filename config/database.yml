@@ -21,8 +21,10 @@ test:
 
 production:
   <<: *default
-  database: flipbee_production
-  username: "hieuvo"
-  password: "10761521"
-  host: "/cloudsql/flipbee:asia-east1:flipbee-production"
+  database: d5io63hjsl87na
+  username: "lepqewixiryryp"
+  password: "e4c9d17558cac39b672bfc501fd332bf195a9b33d69681b6a2a524e230ff64e7"
+  host: "ec2-107-20-234-175.compute-1.amazonaws.com"
+  uri: "postgres://lepqewixiryryp:e4c9d17558cac39b672bfc501fd332bf195a9b33d69681b6a2a524e230ff64e7@ec2-107-20-234-175.compute-1.amazonaws.com:5432/d5io63hjsl87na"
+  
 
