@@ -4,7 +4,11 @@ module API::V1
     before_action :authorize_request, except: %i[index show]
 
     def index
-      render json: Card.all, serializer_each: serializer, root: false, adapter: :attributes
+      card = Card.all
+      if params[:user_id]
+        card = card.where(user_id: params[:user_id])
+      end
+      render json: card, serializer_each: serializer, root: false, adapter: :attributes
     end
 
     def create
