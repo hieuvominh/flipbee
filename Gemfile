@@ -8,11 +8,17 @@ gem 'rails', '~> 6.0.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'pg'
+# gem 'whenever'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+# gem 'sidekiq'
 gem 'rack'
 gem 'appengine'
+# gem 'redis-rails'
+gem 'sidekiq'
+gem 'redis-namespace'
+gem 'whenever', require: false
 gem 'active_model_serializers'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'

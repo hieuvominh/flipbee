@@ -12,11 +12,26 @@ module API::V1
 
     def create
       collection = Collection.create!(collection_params.merge(:user_id => @current_user.id))
+      if(collection.id)
+        Trending.create!(
+          zdaily: 0, 
+          previous_daily_total: 0, 
+          daily_total: 0, 
+          zmonthly: 0, 
+          previous_monthly_total: 0,
+          monthly_total: 0,
+          collection_id: collection.id
+        )
+      end
       render json: collection, serializer: serializer, status: :created, root: false, adapter: :attributes
     end
 
     def show
       collection = Collection.find(params[:id])
+      trending = Trending.where(collection_id: collection.id).first
+      trending.daily_total +=1
+      trending.monthly_total +=1
+      trending.save!
       render json: collection, root: false, serializer: serializer, adapter: :attributes
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_103554) do
+ActiveRecord::Schema.define(version: 2019_12_21_094922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2019_12_08_103554) do
     t.string "description"
     t.string "thumb_image_url"
     t.integer "user_id", null: false
+  end
+
+  create_table "trendings", force: :cascade do |t|
+    t.integer "zdaily"
+    t.integer "previous_daily_total"
+    t.integer "daily_total"
+    t.integer "zmonthly"
+    t.integer "previous_monthly_total"
+    t.integer "monthly_total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "collection_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

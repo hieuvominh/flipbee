@@ -2,7 +2,6 @@ module API::V1
   class AuthenticationController < ApplicationController
     before_action :authorize_request, except: :login
 
-    # POST api/auth/login
     def login
       @user = User.find_by_username(params[:username])
       if @user&.authenticate(params[:password])
